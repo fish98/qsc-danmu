@@ -15,12 +15,6 @@
     "extraFiles": [
       "config.js"
     ],
-    "mac": {
-      "category": "public.app-category.utilities",
-      "target": [
-        "zip"
-      ]
-    },
     "win": {
       "target": [
         "7z"

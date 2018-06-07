@@ -48,17 +48,30 @@ const init = () => {
             }]);
         } else if (mode === 'image') {
             id++;
-            console.log(111);
-            coordinator.emit('gotDanmu', [{
-                text: `[IMG WIDTH=200]${text}[/IMG]`,
-                color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                lifeTime: 1000,
-                textStyle: 'normal' + 24 + 'em 微软雅黑',
-                height: 20 * 10,
-                id: id
-            }]);
+            // console.log(111);
+            let image = new Image()
+            image.src = text;
+            image.onload = () => {
+                let width = image.width
+                let height = image.height
+                const radio = height / width;
+                coordinator.emit('gotDanmu', [{
+                    text: `[IMG WIDTH=${parseInt(200/radio)}]${text}[/IMG]`,
+                    color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
+                    lifeTime: 1300,
+                    textStyle: 'normal' + 24 + 'em 微软雅黑',
+                    height: 180,
+                    id: id
+                }]);
+            }
         }
-    })
+    });
+    ws.on('close', () => {
+        console.log('disconnected and trying to reconnect');
+        ws.on('open', () => {
+            console.log('reconnected');
+        });
+    });
 }
 
 function realInit () {
