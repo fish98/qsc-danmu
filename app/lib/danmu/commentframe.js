@@ -307,19 +307,23 @@ class CommentFrame extends Frame {
      * @Override
      * 清除已经死亡的Sprite
      */
-  clearSprite () {
-    for (let i = 0; i < this.layers.length; i++) {
-      for (let j = 0; j < this.layers[i].length; j++) {
-        if (!this.layers[i][j].alive) {
-          delete this.idMap[this.layers[i][j].id]
-          delete this.layers[i][j] // 删除相应对象
-          this.layers[i] = this.layers[i].slice(0, j).concat(this.layers[i].slice(j + 1, this.layers[i].length)) // 清除数组中该位置
-          for (let l = j; l < this.layers[i].length; l++) {
-            this.idMap[this.layers[i][l].id].index--
-          }
+    clearSprite() {
+      try {
+        for (let i = 0; i < this.layers.length; i++) {
+            for (let j = 0; j < this.layers[i].length; j++) {
+                if (!this.layers[i][j].alive) {
+                    delete this.idMap[this.layers[i][j].id]
+                    delete this.layers[i][j] // 删除相应对象
+                    this.layers[i] = this.layers[i].slice(0, j).concat(this.layers[i].slice(j + 1, this.layers[i].length)) // 清除数组中该位置
+                    for (let l = j; l < this.layers[i].length; l++) {
+                        this.idMap[this.layers[i][l].id].index--
+                    }
+                }
+            }
         }
+      } catch (error) {
+          console.log(error);
       }
-    }
   };
 
   /**

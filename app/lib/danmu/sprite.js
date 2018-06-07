@@ -14,8 +14,10 @@
  * @param alive
  * @returns {Sprite}
  */
+
 class Sprite {
-  constructor (id, x, y, width, height, speed, lifeTime, alive) {
+    constructor(id, x, y, width, height, speed, lifeTime, alive) {
+        this.last = new Date();
     this.id = id || 0
     this.x = x || 0
     this.y = y || 0
@@ -37,9 +39,12 @@ class Sprite {
 
   }
 
-  move () {
-    this.x += this.speed.x
-    this.y += this.speed.y
+    move() {
+        let now = new Date();
+        const interval = (now.getTime() - this.last.getTime())/13;
+        this.last = now;
+    this.x += this.speed.x * interval
+    this.y += this.speed.y * interval
     if (typeof this.children !== 'undefined') {
       for (let i = 0; i < this.children.length; i++) {
         this.children[i].speed = this.speed
