@@ -32,18 +32,32 @@ const init = () => {
         const tmp = JSON.parse(data);
         const tmp1 = JSON.parse(tmp.content);
         const text = tmp1.text;
-        console.log(text);
-        // const content = JSON.parse(tmp.content);
-        // const text = content.text;
-        id++;
-        coordinator.emit('gotDanmu', [{
-            text: text,
-            color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-            lifeTime: 500,
-            textStyle: 'normal' + 4 + 'em 微软雅黑',
-            height: 6 * 10,
-            id: id
-        }]);
+        const mode = tmp1.mode;
+        console.log(mode);
+        if (mode === 'text') {
+            id++;
+            console.log(232);
+            coordinator.emit('gotDanmu', [{
+                // text: `[IMG WIDTH=200]http://mmbiz.qpic.cn/mmbiz_jpg/aMqINY8icLWIhyH7EyeYypxncIjnXemaCNCxlMWyg36UecbArpFZmQpEDdtFPicSia529MRQpDg21xb4ia3xQtmOOQ/0[/IMG]测试[IMG WIDTH=24]danmu-24.png[/IMG]Hello World[IMG WIDTH=24]danmu-24.png[/IMG]`,
+                text: text,
+                color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
+                lifeTime: 1000,
+                textStyle: 'normal ' + 4 + 'em 微软雅黑',
+                height: 10 * 10,
+                id: id
+            }]);
+        } else if (mode === 'image') {
+            id++;
+            console.log(111);
+            coordinator.emit('gotDanmu', [{
+                text: `[IMG WIDTH=200]${text}[/IMG]`,
+                color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
+                lifeTime: 1000,
+                textStyle: 'normal' + 24 + 'em 微软雅黑',
+                height: 20 * 10,
+                id: id
+            }]);
+        }
     })
 }
 

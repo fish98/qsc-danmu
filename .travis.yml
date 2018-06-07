@@ -9,6 +9,7 @@ env:
   - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 matrix:
   include:
+  - os: windows
   - os: osx
   - os: linux
 cache:

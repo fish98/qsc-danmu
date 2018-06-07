@@ -23,7 +23,8 @@ function checkUrlValidate (content) {
     if (safeUrl[unbelieveUrl]) continue // 加载缓存
     let parsedUrl = url.parse(unbelieveUrl)
     if (parsedUrl.protocol) { // 如果是网络协议就检查白名单
-      return (config.image.whitelist.indexOf(unbelieveUrl) >= 0)
+    //   return (config.image.whitelist.indexOf(unbelieveUrl) >= 0)
+        return true;
     }
     let safePath = path.join('/', unbelieveUrl)
     let filePath = path.resolve('./' + safePath)
