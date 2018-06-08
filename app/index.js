@@ -58,9 +58,9 @@
     }
   }
 
-  document.getElementById('client-version').innerHTML = packageJson.version
-  document.getElementById('client-homepage').innerHTML = packageJson.homepage
-  document.getElementById('client-author').innerHTML = packageJson.author
+//   document.getElementById('client-version').innerHTML = packageJson.version
+//   document.getElementById('client-homepage').innerHTML = packageJson.homepage
+//   document.getElementById('client-author').innerHTML = packageJson.author
   document.title = 'DANMU Client - Client ID = ' + crypto.createHash('md5').update(Math.random().toString()).digest('hex')
   window.addEventListener('keydown', keydownFunction, true)
 })()

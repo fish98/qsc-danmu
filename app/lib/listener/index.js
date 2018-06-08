@@ -18,9 +18,9 @@ module.exports = {
 }
 
 let id = 10000;
-
+let ws;
 const init = () => {
-    const ws = new WebSocket(`ws://10.100.71.126:4020`);
+    ws = new WebSocket(`wss://site.zjuqsc.com/danmu`);
     ws.on('open', () => {
         ws.send(JSON.stringify({
             data: `Connection established`,
@@ -36,19 +36,17 @@ const init = () => {
         console.log(mode);
         if (mode === 'text') {
             id++;
-            console.log(232);
             coordinator.emit('gotDanmu', [{
                 // text: `[IMG WIDTH=200]http://mmbiz.qpic.cn/mmbiz_jpg/aMqINY8icLWIhyH7EyeYypxncIjnXemaCNCxlMWyg36UecbArpFZmQpEDdtFPicSia529MRQpDg21xb4ia3xQtmOOQ/0[/IMG]测试[IMG WIDTH=24]danmu-24.png[/IMG]Hello World[IMG WIDTH=24]danmu-24.png[/IMG]`,
                 text: text,
                 color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                lifeTime: 1000,
-                textStyle: 'normal ' + 4 + 'em 微软雅黑',
+                lifeTime: parseInt(Math.random() * 200) + 1000,
+                textStyle: 'normal ' + (parseInt(Math.random() * 4)+3) + 'em 微软雅黑',
                 height: 10 * 10,
                 id: id
             }]);
         } else if (mode === 'image') {
             id++;
-            // console.log(111);
             let image = new Image()
             image.src = text;
             image.onload = () => {
@@ -58,19 +56,22 @@ const init = () => {
                 coordinator.emit('gotDanmu', [{
                     text: `[IMG WIDTH=${parseInt(200/radio)}]${text}[/IMG]`,
                     color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                    lifeTime: 1300,
+                    lifeTime: parseInt(Math.random()*200)+1400,
                     textStyle: 'normal' + 24 + 'em 微软雅黑',
-                    height: 180,
+                    height: 200,
                     id: id
                 }]);
             }
         }
     });
+    ws.on('error', (err) => {
+        console.log(err);
+    })
     ws.on('close', () => {
-        console.log('disconnected and trying to reconnect');
-        ws.on('open', () => {
-            console.log('reconnected');
-        });
+        console.log('disconnected and trying to reconnect in 0.5s');
+        setTimeout(() => {
+            init();
+        }, 500);
     });
 }
 

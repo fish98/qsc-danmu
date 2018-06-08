@@ -1,6 +1,6 @@
 {
   "name": "danmu-client",
-  "version": "1.1.0",
+  "version": "0.0.2",
   "description": "Danmu client",
   "main": "app/main.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "danmu",
     "danmaku"
   ],
-  "author": "zsx <zsx@zsxsoft.com>",
+  "author": "zsx <zsx@zsxsoft.com>, laphets",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zsxsoft/danmu-client/issues"
