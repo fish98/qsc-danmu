@@ -41,7 +41,7 @@ const init = () => {
                 text: text,
                 color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
                 lifeTime: parseInt(Math.random() * 200) + 1000,
-                textStyle: 'normal ' + (parseInt(Math.random() * 4)+3) + 'em 微软雅黑',
+                textStyle: 'normal ' + (parseInt(Math.random() * 4)+4) + 'em 微软雅黑',
                 height: 10 * 10,
                 id: id
             }]);
@@ -54,11 +54,11 @@ const init = () => {
                 let height = image.height
                 const radio = height / width;
                 coordinator.emit('gotDanmu', [{
-                    text: `[IMG WIDTH=${parseInt(200/radio)}]${text}[/IMG]`,
+                    text: `[IMG WIDTH=${parseInt(230/radio)}]${text}[/IMG]`,
                     color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
                     lifeTime: parseInt(Math.random()*200)+1400,
-                    textStyle: 'normal' + 24 + 'em 微软雅黑',
-                    height: 200,
+                    textStyle: 'normal bold ' + 26 + 'em 微软雅黑',
+                    height: 230,
                     id: id
                 }]);
             }
