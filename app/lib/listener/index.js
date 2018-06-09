@@ -20,7 +20,7 @@ module.exports = {
 let id = 10000;
 let ws;
 const init = () => {
-    ws = new WebSocket(`wss://site.zjuqsc.com/danmu`);
+    ws = new WebSocket(`wss://site.zjuqsc.com/danmu/`);
     ws.on('open', () => {
         ws.send(JSON.stringify({
             data: `Connection established`,
