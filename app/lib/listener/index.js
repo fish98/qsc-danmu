@@ -17,7 +17,7 @@ module.exports = {
   }
 }
 
-let id = 10000;
+let id = 1;
 let ws;
 const init = () => {
     ws = new WebSocket(`wss://site.zjuqsc.com/danmu/`);
