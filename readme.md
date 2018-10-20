@@ -1,43 +1,5 @@
 danmu-client
 ==========
-[![Github All Releases](https://img.shields.io/github/downloads/zsxsoft/danmu-client/total.svg)](https://github.com/zsxsoft/danmu-client/releases)
-[![David deps](https://david-dm.org/zsxsoft/danmu-client.svg)](https://david-dm.org/zsxsoft/danmu-client)
-
-这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。屏幕截图见[Release](https://github.com/zsxsoft/danmu-client/releases)。
-
-**欲使用此项目，服务端需要使用对应的版本。[已发布的客户端](https://github.com/zsxsoft/danmu-client/releases)均已写明对应的服务端版本号，开发分支内的客户端版本仅对应开发分支的服务端。**
-
-## 功能特色
-- 以``WebSocket``作为通讯协议，用``Canvas``作为弹幕的画布；
-- 可在桌面任何位置显示弹幕，可与其他程序（如PowerPoint、视频播放器等）共同工作；
-- 窗口置于最前，完全透明可穿透，能与其他程序正常交互；
-- 提供紧急清空弹幕池、停止接收弹幕等功能，可删除单条弹幕；
-- 支持图片弹幕。
-
-### 适用场景
-- 数十人至千人集会（如学校活动、电影放映会）的实时互动
-- 大型活动实时公告信息显示
-- 欲在桌面显示实时吐槽
-
-## 最低系统要求
-
-Windows 7 / macOS 10.9 (x64) / Ubuntu 12.04 / Fedora 21 / Debian 8
-
-## 使用预编译版本
-
-1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
-2. 双击目录下的``danmu-client``，启动成功。
-
-## 从源码启动
-
-1. 下载并安装[Nodejs](https://nodejs.org)，并检查[node-gyp](https://github.com/nodejs/node-gyp)的依赖环境。
-2. ``npm install``
-3. ``npm start``
-
-## 打包发布
-
-``npm run build``
-
 ## 配置说明
 根目录``config.js``下有配置，以下是说明
 
@@ -106,21 +68,3 @@ return (() => {
 })();
 
 ```
-
-
-## 开源协议
-The MIT License (MIT)
-
-
-## 博文
-[弹幕服务器及搭配之透明弹幕客户端研究结题报告](https://blog.zsxsoft.com/post/15)
-
-[弹幕服务器及搭配之透明弹幕客户端研究中期报告](https://blog.zsxsoft.com/post/14)
-
-[弹幕服务器及搭配之透明弹幕客户端研究开题报告](https://blog.zsxsoft.com/post/13)
-
-## 开发者
-zsx - https://www.zsxsoft.com / 博客 - https://blog.zsxsoft.com
-
-## 感谢
-[DDPlayer](https://github.com/dpy1123/ddplayer) by dpy1123
