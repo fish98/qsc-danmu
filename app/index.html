@@ -18,7 +18,7 @@
     
     #message {
         color: white;
-        font-size: 12px;
+        /* font-size: 12px; */
     }
     
     .border {
@@ -32,20 +32,32 @@
     
     html {
         overflow: hidden;
+        font-family: 'Helvetica Neue',Helvetica,'Nimbus Sans L',Arial,'Liberation Sans','Hiragino Sans GB','Source Han Sans CN','Source Han Sans SC','Microsoft YaHei','Wenquanyi Micro Hei','WenQuanYi Zen Hei','ST Heiti',SimHei,'WenQuanYi Zen Hei Sharp',sans-serif !important;
+    }
+
+    .container {
+        margin-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px !important;
     }
     </style>
 </head>
 
 <body style="background: black">
     <div class="border"></div>
-    <p id="message">
-        求是潮潮毕弹幕系统<br>
-        大小和位置调整完毕后，按下回车或点击按钮开启弹幕。
-        <br/> 实际位置即黑框所在位置。
-        <br/>
-        <br/> 版本号：<span id="client-version"> 0.0.2-beta</span>
-        <br/> 按下F12，打开调试器。
-    </p>
+    <div class="container">
+        <div id="message">
+            求是潮弹幕系统<br>
+            大小和位置调整完毕后，按下回车或点击按钮开启弹幕。
+            <br /> 实际位置即黑框所在位置。
+            <br />
+            <br /> 版本号：<span id="client-version"> 1.0.0</span>
+            <br /> 按下F12，打开调试器。
+        </div>
+    </div>
+
     <canvas id="main-canvas" style="-webkit-app-region: drag"></canvas>
 </body>
 <script src="index.js"></script>

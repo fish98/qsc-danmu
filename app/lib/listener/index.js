@@ -55,7 +55,7 @@ const init = () => {
                 coordinator.emit('gotDanmu', [{
                     text: `[IMG WIDTH=${parseInt(230/radio)}]${text}[/IMG]`,
                     color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                    lifeTime: parseInt(Math.random()*200)+2400,
+                    lifeTime: parseInt(Math.random()*200)+4000,
                     textStyle: 'normal bold ' + 26 + 'em 微软雅黑',
                     height: 230,
                     id: id
@@ -64,13 +64,31 @@ const init = () => {
         }
     });
     ws.on('error', (err) => {
-        console.log(err);
+      console.log(err);
+      id++;
+      coordinator.emit('gotDanmu', [{
+        text: `Oops! 出错啦~ ${err}`,
+        color: 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')',
+        lifeTime: 1000,
+        textStyle: 'normal ' + (parseInt(Math.random() * 4) + 4) + 'em 微软雅黑',
+        height: 10 * 10,
+        id: id
+      }]);
     })
     ws.on('close', () => {
-        console.log('disconnected and trying to reconnect in 0.5s');
-        setTimeout(() => {
-            init();
-        }, 500);
+      console.log('disconnected and trying to reconnect in 0.5s');
+      id++;
+      coordinator.emit('gotDanmu', [{
+        text: `Oops! 正在重连~`,
+        color: 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')',
+        lifeTime: 1000,
+        textStyle: 'normal ' + (parseInt(Math.random() * 4) + 4) + 'em 微软雅黑',
+        height: 10 * 10,
+        id: id
+      }]);
+      setTimeout(() => {
+          init();
+      }, 500);
     });
 }
 
