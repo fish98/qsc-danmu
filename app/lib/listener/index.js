@@ -55,7 +55,7 @@ const init = () => {
                 coordinator.emit('gotDanmu', [{
                     text: `[IMG WIDTH=${parseInt(230/radio)}]${text}[/IMG]`,
                     color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                    lifeTime: parseInt(Math.random()*200)+4000,
+                    lifeTime: parseInt(Math.random()*200)+4800,
                     textStyle: 'normal bold ' + 26 + 'em 微软雅黑',
                     height: 230,
                     id: id
