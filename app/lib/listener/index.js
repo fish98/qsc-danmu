@@ -20,7 +20,8 @@ module.exports = {
 let id = 1;
 let ws;
 const init = () => {
-    ws = new WebSocket(`wss://site.zjuqsc.com/danmu/`);
+    ws = new WebSocket(`wss://live.zjuqsc.com/ws/`);
+    // ws = new WebSocket(`ws://localhost:2333`);
     ws.on('open', () => {
         ws.send(JSON.stringify({
             data: `Connection established`,
@@ -29,11 +30,9 @@ const init = () => {
     });
     ws.on('message', (data) => {
         // console.log(data);
-        const tmp = JSON.parse(data);
-        const tmp1 = JSON.parse(tmp.content);
-        const text = tmp1.text;
-        const mode = tmp1.mode;
-        console.log(mode);
+      const prased = JSON.parse(data);
+      const { type, text, mode } = prased;
+      console.log(prased);
         if (mode === 'text') {
             id++;
             coordinator.emit('gotDanmu', [{
@@ -56,7 +55,7 @@ const init = () => {
                 coordinator.emit('gotDanmu', [{
                     text: `[IMG WIDTH=${parseInt(230/radio)}]${text}[/IMG]`,
                     color: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')',
-                    lifeTime: parseInt(Math.random()*200)+1400,
+                    lifeTime: parseInt(Math.random()*200)+2400,
                     textStyle: 'normal bold ' + 26 + 'em 微软雅黑',
                     height: 230,
                     id: id
